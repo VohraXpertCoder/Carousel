@@ -6,7 +6,7 @@ export const Carousel = ({ slides }) => {
     const [currentStep, setCurrentStep ]= React.useState(0);
 
     const handleNextClick = () => {
-        const step = currentStep === (slides.length-1) ? 0 : (currentStep +1);
+        const step = currentStep === (slides.length-1) ? 0 : (currentStep + 1);
         setCurrentStep(step);
     }
 
@@ -18,14 +18,13 @@ export const Carousel = ({ slides }) => {
 
     return (
         <div className='container'>
-            <BsArrowLeftCircleFill className='arrow arrow-left' onClick={handleNextClick}></BsArrowLeftCircleFill>
+            <BsArrowLeftCircleFill className='arrow arrow-left' onClick={handlePrevClick}></BsArrowLeftCircleFill>
             {slides.map((slide, idx) => {
-                console.log('idx', idx);
                 return (
                     <img className= {`slide ${currentStep === idx ? '' : 'hidden'}`} key={idx} src={slide.src} alt={slide.alt}/>
                 )
             })}
-            <BsArrowRightCircleFill className='arrow arrow-right' onClick={handlePrevClick}></BsArrowRightCircleFill>
+            <BsArrowRightCircleFill className='arrow arrow-right' onClick={handleNextClick}></BsArrowRightCircleFill>
             <div className='indicators'>
                 {slides.map((_, idx) => {
                     return (
